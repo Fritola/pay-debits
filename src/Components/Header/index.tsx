@@ -4,6 +4,8 @@ import profileImage from '../../assets/profile.jpeg'
 
 
 const Header:React.FC = () => {
+
+    //TODO get user info
     return(
 
         <HeaderContainer>
