@@ -9,8 +9,7 @@ interface DebitProps{
     value: string;
 }
 
-const DebitCard:React.FC<DebitProps> = ({image, type, who, value}) => {
-    console.log(image)
+const DebitCard:React.FC<DebitProps> = ({image, type, who, value}) => {    
     return(
         <DebitCardContainer>
             <DebitInfoContainer>
