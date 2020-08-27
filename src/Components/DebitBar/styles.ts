@@ -20,7 +20,8 @@ export const DebitReceived = styled.div`
     border-bottom-right-radius: 0;
 
     span{
-        color: #204E24
+        color: #204E24;
+        font-weight: bold;
     }
 `
 
@@ -36,6 +37,7 @@ export const DebitToPay = styled.div`
     border-bottom-left-radius: 0;
 
     span{
-        color: #651313
+        color: #651313;
+        font-weight: bold;
     }
 `

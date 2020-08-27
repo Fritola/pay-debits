@@ -35,7 +35,7 @@ const Home:React.FC = () => {
 
         {debits && debits.map((debit, key) =>
         <DebitCardContainer key={key}>            
-            <DebitCard image={profileImage} type={debit.type} who={debit.name} value={debit.value}/>            
+            <DebitCard image={profileImage} type={debit.type} who={debit.who} value={debit.value}/>            
         </DebitCardContainer>
         )}
 
