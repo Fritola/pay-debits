@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import api from '../../services/api'
+import { useHistory } from "react-router-dom";
 
 import {LoginContainer, FormLogin, FormButton, ButtonContainer} from './styles'
 
 const Login:React.FC = () => {
     const [login, setLogin] = useState({email: '', password: ''})
+    let history = useHistory();
 
     const HandleInput = (e:any) => {                
         const {name, value} = e.target
@@ -12,12 +14,14 @@ const Login:React.FC = () => {
     }
 
     const HandleLogin = async () => {
+        
         const response = await api.post('/login', {
             email: login.email,
             password: login.password
         })
         if(response){
             localStorage.setItem('user', JSON.stringify(response.data.user))
+            history.push("/home");
         }else{
             console.log("Erro")
         }

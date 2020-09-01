@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import Header from '../../Components/Header';
 import DebitBar from '../../Components/DebitBar';
 import {DebitContainer, DebitCardContainer} from './styles'
@@ -13,17 +13,36 @@ interface debits {
     userID: string;
     value: string;
     who: string;
+    status: boolean;
+}
+
+interface IUser {
+    _id: string;
+    email: string;
+    name: string;
+    password: string;
 }
 
 const Home:React.FC = () => {
     const [debits, setDebits] = useState<debits[]>([])
-
+    const [user, setUser] = useState<IUser>()
+    
     useEffect(() => {        
-    //get id from user logged
-    api.get('/debits/5f3884ba3ed4e95b91dc280c').then(res => {
-        setDebits(res.data)            
-    })            
+    
+    const getUser = async () => {
+        let response = await localStorage.getItem('user') || '{}' 
+        let objectUser = JSON.parse(response)
+        setUser(objectUser)             
+    }
+    getUser()             
     }, [])
+
+    useEffect(() => {
+        if(user !== undefined)
+        api.get(`/debits/${user?._id}`).then(res => {
+            setDebits(res.data)            
+        })
+    }, [user])
 
     return(
         <>
@@ -33,9 +52,9 @@ const Home:React.FC = () => {
             <DebitBar />
         </DebitContainer>
 
-        {debits && debits.map((debit, key) =>
+        {debits && debits?.map((debit, key) =>
         <DebitCardContainer key={key}>            
-            <DebitCard image={profileImage} type={debit.type} who={debit.who} value={debit.value}/>            
+            <DebitCard image={profileImage} status={debit.status} type={debit.type} who={debit.who} value={debit.value}/>            
         </DebitCardContainer>
         )}
 
