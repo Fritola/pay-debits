@@ -18,6 +18,8 @@ const Login:React.FC = () => {
         })
         if(response){
             localStorage.setItem('user', JSON.stringify(response.data.user))
+        }else{
+            console.log("Erro")
         }
         console.log(response.data)
         
