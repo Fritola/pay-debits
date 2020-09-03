@@ -12,6 +12,8 @@ interface debits {
     type: string;
     userID: string;
     value: string;
+    rest: string;
+    restParcel: string;
     who: string;
     status: boolean;
 }
@@ -43,18 +45,18 @@ const Home:React.FC = () => {
             setDebits(res.data)            
         })
     }, [user])
-
+    console.log(debits)
     return(
         <>
         <Header/>
 
         <DebitContainer>            
-            <DebitBar />
+            {/* <DebitBar /> */}
         </DebitContainer>
 
         {debits && debits?.map((debit, key) =>
         <DebitCardContainer key={key}>            
-            <DebitCard image={profileImage} status={debit.status} type={debit.type} who={debit.who} value={debit.value}/>            
+            <DebitCard image={profileImage} parcel={debit.parcel} rest={debit.rest} restParcel={debit.restParcel} status={debit.status} type={debit.type} who={debit.who} value={debit.value}/>            
         </DebitCardContainer>
         )}
 

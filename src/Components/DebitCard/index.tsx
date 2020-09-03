@@ -6,11 +6,14 @@ interface DebitProps{
     type: string;
     who: string;
     value: string;
+    parcel: number;
+    rest: string;
+    restParcel: string;
     status: boolean;
 }
 
-const DebitCard:React.FC<DebitProps> = ({image, type, who, value, status}) => {   
-    console.log(status) 
+const DebitCard:React.FC<DebitProps> = ({image, type, who, value, status, rest, restParcel, parcel}) => {   
+    console.log(parcel) 
     return(
         <DebitCardContainer>
             <DebitInfoContainer>
@@ -18,12 +21,13 @@ const DebitCard:React.FC<DebitProps> = ({image, type, who, value, status}) => {
 
                 <DebitContainer>
                     <span>Type: {type} </span>
+                    <span>Parcel: {parcel || 1}/{restParcel}</span>
                     <span>Who: {who}</span>
-                    <span>Status: {status}</span>
                 </DebitContainer>
             </DebitInfoContainer>
             <DebitValue>
                 <span>R${value}</span>
+                <span>R${rest} to receive</span>
             </DebitValue>
         </DebitCardContainer>
     )

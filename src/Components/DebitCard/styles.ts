@@ -38,9 +38,14 @@ export const DebitValue = styled.div`
     width: 50%;
     justify-content: center;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    span{
+    span:first-child {
         color: #478E4E;
         font-size: 40px;
+    }
+    span:last-child {
+        
     }
 `
