@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.div`
     display: flex;
     padding: 20px;
+    margin: 50px;
     align-items: center;
     justify-content: space-between;
 `
@@ -28,5 +29,15 @@ export const HeaderLogout = styled.div`
         font-weight: bold;
         color: #746F6F;
         font-size: 20px;
+        cursor: pointer;
+    }
+`
+
+export const HeaderCreateDebit = styled.div`    
+    span {
+        font-weight: bold;
+        color: #746F6F;
+        font-size: 20px;
+        cursor: pointer;
     }
 `

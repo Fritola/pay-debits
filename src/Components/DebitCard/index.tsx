@@ -21,7 +21,7 @@ const DebitCard:React.FC<DebitProps> = ({image, type, who, value, status, rest, 
 
                 <DebitContainer>
                     <span>Type: {type} </span>
-                    <span>Parcel: {parcel || 1}/{restParcel}</span>
+                    <span>Parcel: {restParcel}/{parcel || 1}</span>
                     <span>Who: {who}</span>
                 </DebitContainer>
             </DebitInfoContainer>
