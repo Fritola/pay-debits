@@ -44,8 +44,7 @@ const Home:React.FC = () => {
         api.get(`/debits/${user?._id}`).then(res => {
             setDebits(res.data)            
         })
-    }, [user])
-    console.log(debits)
+    }, [user])    
     return(
         <>
         <Header/>

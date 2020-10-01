@@ -1,10 +1,26 @@
 import styled from 'styled-components'
 
+export const MainContainer = styled.div`
+    display: flex;
+`
+
+export const ImageContainer = styled.div`
+    width: 60%;
+    height: 80vh;
+    padding: 30px;
+
+    img{
+        width: auto;
+        height: 100%
+    }
+`
+
 export const LoginContainer = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 200px;
+    align-items: center;    
+    flex-direction: column;
+    width: 40%
 `
 
 export const FormLogin = styled.form`

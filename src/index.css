@@ -19,3 +19,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.testeGoogle{  
+  width: 300px !important;
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px !important;
+}

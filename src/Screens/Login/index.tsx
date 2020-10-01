@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-import ReactDOM from 'react-dom';
+import {GoogleLogin} from 'react-google-login';
 
-import {GoogleLogin, GoogleLogout} from 'react-google-login';
-
+import transferImage from '../../assets/transfer-money.png'
 
 import api from '../../services/api'
 import { useHistory } from "react-router-dom";
 
-import {LoginContainer, FormLogin, FormButton, ButtonContainer} from './styles'
+import {MainContainer, ImageContainer, LoginContainer} from './styles'
 
 interface GoogleLoginResponse {
     profileObj: IGoogleUser;
@@ -21,29 +20,8 @@ interface IGoogleUser {
     googleId: string;
 }
 
-const Login:React.FC = () => {
-    const [login, setLogin] = useState({email: '', password: ''})
+const Login:React.FC = () => {    
     let history = useHistory();
-
-    const HandleInput = (e:any) => {                
-        const {name, value} = e.target
-        setLogin({...login, [name]: value})          
-    }
-
-    const HandleLogin = async () => {
-        
-        const response = await api.post('/login', {
-            email: login.email,
-            password: login.password
-        })
-        if(response){
-            localStorage.setItem('user', JSON.stringify(response.data.user))
-            history.push("/home");
-        }else{
-            console.log("Erro")
-        }
-        console.log(response.data)        
-    }
 
     const responseGoogle = async (response: any) => {
         console.log(response.profileObj)               
@@ -55,9 +33,8 @@ const Login:React.FC = () => {
                 googleId: response.profileObj.googleId,
                 imageUrl: response.profileObj.imageUrl
             })
-            console.log(res)
-            //TODO inserir ID do Mongo
-            localStorage.setItem('user', JSON.stringify(response.profileObj))
+            console.log(res.data)
+            localStorage.setItem('user', JSON.stringify(res.data))
             history.push("/home");
         }catch (error) {
             console.log(error)
@@ -65,35 +42,40 @@ const Login:React.FC = () => {
         }                
       }
     return(
-        <>
+        <MainContainer>
+
+        <ImageContainer>
+            <img src={transferImage} alt=""/>
+        </ImageContainer>
+        
         <LoginContainer>
-            <FormLogin>
+            {/* <FormLogin>
                 <input onChange={(e) => HandleInput(e)} type="email" value={login.email} name="email" id="" placeholder="Email"/>
                 <input onChange={(e) => HandleInput(e)} type="password" value={login.password} name="password" id="" placeholder="Password"/>
                 <ButtonContainer onClick={HandleLogin}>
                     <FormButton type="button">Enter</FormButton>
                 </ButtonContainer>
-            </FormLogin>
+            </FormLogin> */}            
             
-        </LoginContainer>
+        <div>
         
-        <GoogleLogin
-            clientId="202500888561-oftsn2ng5t6qi66se6gbuqd1tgm4klar.apps.googleusercontent.com"
-            render={renderProps => (
-            <button onClick={renderProps.onClick} disabled={renderProps.disabled}>This is my custom Google button</button>
-            )}
-            buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-        />
+            <GoogleLogin
+            className="testeGoogle"
+            buttonText="Login com Google"
+                clientId="202500888561-oftsn2ng5t6qi66se6gbuqd1tgm4klar.apps.googleusercontent.com"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+            />
+        </div>
+        </LoginContainer>
 
-        <GoogleLogout
+        {/* <GoogleLogout
             clientId="202500888561-oftsn2ng5t6qi66se6gbuqd1tgm4klar.apps.googleusercontent.com"
             buttonText="Logout"
             onLogoutSuccess={() => console.log("logout")}
-            />
-        </>
+            /> */}
+        </MainContainer>
     )
 }
 
