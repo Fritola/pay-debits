@@ -26,7 +26,7 @@ const Header:React.FC = () => {
         history.push("/login");
     }
 
-    const createDebit = () => {
+    const createDebit = () => {            
         history.push("/create");
     }
     //TODO get user info
@@ -39,11 +39,11 @@ const Header:React.FC = () => {
             </HeaderUserContainer>
 
             <HeaderCreateDebit>
-                <span onClick={createDebit}>Create debit</span>
+                <span onClick={createDebit}>Criar dívida</span>
             </HeaderCreateDebit>
 
             <HeaderLogout>
-                <span onClick={Logout}>Sair</span>
+                <span onClick={Logout}>Logout</span>
             </HeaderLogout>                
         </HeaderContainer>
     )

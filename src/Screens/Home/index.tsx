@@ -42,7 +42,8 @@ const Home:React.FC = () => {
     useEffect(() => {
         if(user !== undefined)
         api.get(`/debits/${user?._id}`).then(res => {
-            setDebits(res.data)            
+            setDebits(res.data)    
+            console.log(res)        
         })
     }, [user])    
     return(
@@ -55,7 +56,7 @@ const Home:React.FC = () => {
 
         {debits && debits?.map((debit, key) =>
         <DebitCardContainer key={key}>            
-            <DebitCard image={profileImage} parcel={debit.parcel} rest={debit.rest} restParcel={debit.restParcel} status={debit.status} type={debit.type} who={debit.who} value={debit.value}/>            
+            <DebitCard name={debit.name} image={profileImage} parcel={debit.parcel} rest={debit.rest} restParcel={debit.restParcel} status={debit.status} type={debit.type} who={debit.who} value={debit.value}/>            
         </DebitCardContainer>
         )}
 

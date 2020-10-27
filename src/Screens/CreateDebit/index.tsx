@@ -28,7 +28,7 @@ const CreateDebit:React.FC = () => {
         let userStorage = localStorage.getItem('user') || '{}' 
         let objectUser = JSON.parse(userStorage)
         console.log(debit)
-        if(debit.debitEmail === '' || debit.name === '' || debit.value === '' || debit.type === '' || debit.parcel === '' || debit.who === '') {
+        if(debit.debitEmail === '' || debit.name === '' || debit.value === '' || debit.who === '') {
             alert("Faltam dados")
             return console.error('Error');                        
         }
@@ -45,7 +45,7 @@ const CreateDebit:React.FC = () => {
         }
                        
     }
-
+    
     return(
         <>
             <Header />
@@ -54,8 +54,8 @@ const CreateDebit:React.FC = () => {
                 <CreateDebitForm>                    
                     <input onChange={(e) => HandleInput(e)} required value={debit.name} name="name" id="" placeholder="Título da dívida"/>
                     <input onChange={(e) => HandleInput(e)} required value={debit.value} name="value" id="" placeholder="Valor"/>
-                    <input onChange={(e) => HandleInput(e)} required value={debit.type} name="type" id="" placeholder="Tipo (parcelado ou a vista)"/>
-                    <input onChange={(e) => HandleInput(e)} required value={debit.parcel} name="parcel" id="" placeholder="Parcelas"/>
+                    {/* <input onChange={(e) => HandleInput(e)} required value={debit.type} name="type" id="" placeholder="Tipo (parcelado ou a vista)"/> */}
+                    {/* <input onChange={(e) => HandleInput(e)} required value={debit.parcel} name="parcel" id="" placeholder="Parcelas"/> */}
                     <input onChange={(e) => HandleInput(e)} required type="email" value={debit.debitEmail} name="debitEmail" id="" placeholder="Email devedor"/>
                     <input onChange={(e) => HandleInput(e)} required value={debit.who} name="who" id="" placeholder="Quem"/>
                     <ButtonContainer onClick={handleCreate}>

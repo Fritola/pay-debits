@@ -57,11 +57,11 @@ const Login:React.FC = () => {
                 </ButtonContainer>
             </FormLogin> */}            
             
-        <div>
-        
+        <div className="googleLoginContainer">
+            <span>Sign in or Register</span>
             <GoogleLogin
             className="testeGoogle"
-            buttonText="Login com Google"
+            buttonText="Enter with Google"
                 clientId="202500888561-oftsn2ng5t6qi66se6gbuqd1tgm4klar.apps.googleusercontent.com"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}

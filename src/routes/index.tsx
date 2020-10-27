@@ -8,9 +8,9 @@ import CreateDebit from '../Screens/CreateDebit';
 
 const Routes: React.FC = () => (
   <Switch>
+    <Route path="/create" component={CreateDebit} />
     <Route path="/home" exact component={Home} />
     <Route path="/" component={Login} />
-    <Route path="/create" component={CreateDebit} />
   </Switch>
 );
 

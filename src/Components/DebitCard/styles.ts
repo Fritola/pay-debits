@@ -4,6 +4,8 @@ export const DebitCardContainer = styled.div`
     background: #D6EFEE;
     width: 700px;
     height: 150px;
+    padding: 15px;
+    justify-content: space-between;    
     border-radius: 10px;
     display: flex;
     align-items: center;    
@@ -12,7 +14,7 @@ export const DebitCardContainer = styled.div`
 export const DebitInfoContainer = styled.div`
     display: flex;
     align-items: center;  
-    width: 50%;
+    width: auto;
     justify-content: space-around;
     
 `
@@ -21,6 +23,7 @@ export const DebitImage = styled.img`
     width: 100px;
     height: 100px;
     border-radius: 50px;
+    margin-right: 30px;
 `
 
 export const DebitContainer = styled.div`
@@ -35,7 +38,7 @@ export const DebitContainer = styled.div`
 `
 
 export const DebitValue = styled.div`
-    width: 50%;
+    width: auto;
     justify-content: center;
     display: flex;
     flex-direction: column;
